@@ -1,13 +1,14 @@
 class Client
-  attr_reader(:name, :id)
+  attr_reader(:name, :id, :stylist_id)
 
     def initialize (attributes)
       @name = attributes.fetch(:name)
       @id = attributes.fetch(:id).to_i
+      @stylist_id = attributes.fetch(:stylist_id).to_i
     end
 
     def save
-      result = DB.exec("INSERT INTO clients (name) VALUES ('#{@name}') RETURNING ID;")
+      result = DB.exec("INSERT INTO clients (name, stylist_id) VALUES ('#{@name}', #{@stylist_id}) RETURNING ID;")
       @id = result.first.fetch("id")
     end
 
@@ -17,7 +18,8 @@ class Client
       clients.each() do |client|
         name = client.fetch("name")
         id = client.fetch("id").to_i
-        all_clients.push(Client.new({:name => name, :id => id}))
+        stylist_id = client.fetch("stylist_id").to_i
+        all_clients.push(Client.new({:name => name, :id => id, :stylist_id => stylist_id}))
       end
       all_clients
     end
@@ -34,7 +36,7 @@ class Client
       @name = attributes.fetch(:name, @name)
       @stylist_id = attributes.fetch(:stylist_id, @stylist_id)
       DB.exec("UPDATE clients SET name = '#{@name}' WHERE id = #{self.id()};")
-      # DB.exec("UPDATE clients SET stylist_id = #{stylist_id} WHERE id = #{self.id()};")
+      DB.exec("UPDATE clients SET stylist_id = #{stylist_id} WHERE id = #{self.id()};")
     end
 
 
