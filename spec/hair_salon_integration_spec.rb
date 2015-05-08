@@ -16,3 +16,16 @@ describe('add client form path', {:type => :feature}) do
     expect(page).to have_content('Harry Potter')
   end
 end
+
+describe('individual client and stylist page path') do
+  it('send user to individual pages when name link is clicked') do
+    client = Client.new({:name => "Bill", :id => nil, :stylist_id => nil})
+    client.save()
+    stylist = Stylist.new({:name => "Bob", :id => nil})
+    stylist.save()
+    visit("/clients/#{client.id()}")
+    expect(page).to have_content("Bill")
+    visit("/stylists/#{stylist.id()}")
+    expect(page).to have_content("Bob")
+  end
+end

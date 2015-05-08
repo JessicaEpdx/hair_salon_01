@@ -31,3 +31,28 @@ post('/stylists') do
   @all_stylists = Stylist.all()
   erb(:stylists)
 end
+
+get('/stylists') do
+  @all_stylists = Stylist.all()
+  erb(:stylists)
+end
+
+get('/clients/:id') do
+  @client = Client.find(params.fetch("id"))
+  erb(:client)
+end
+
+get('/stylists/:id') do
+  @stylist = Stylist.find(params.fetch("id"))
+  @all_clients = Client.all()
+  erb(:stylist)
+end
+
+post('/stylists/:id') do##make patch later
+  @stylist = Stylist.find(params.fetch("id"))
+  @all_clients = Client.all()
+  @client = Client.find(params.fetch("client_id".to_i))
+  @client.update({:stylist_id => params.fetch("id")})
+  @clients = @stylist.clients()
+  erb(:stylist)
+end

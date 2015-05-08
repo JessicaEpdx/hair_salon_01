@@ -1,0 +1,34 @@
+<div class="row">
+  <div class="col-sm-6">
+    <h1 style="font-size:60px;"><%= @stylist.name() %></h1>
+  </div>
+  <div class="col-sm-6">
+    <div class="row">
+      <a href="/" role="button" class="btn btn-primary" style="float: right; margin-top: 20px">Home</a>
+    </div>
+    <div class="row">
+      <a href="/stylists" role="button" class="btn btn-warning" style="float: right; margin-top: 7px">All Stylists</a>
+    </div>
+    <div class="row">
+      <a href="/clients" role="button" class="btn btn-info" style="float:right; margin-top: 7px">All Clients</a>
+    </div>
+  </div>
+</div>
+
+
+<h1 style="font-size:30px;">Add a Client to this Stylist</h1>
+
+<form action = "/stylists/<%=@stylist.id()%>" method= "post">
+  <div class="form-group">
+    <label for="client">Client Name:</label>
+    <select id="client" name="client" type"text">
+      <% @all_clients.each do |client| %>
+    <option value="<%= client.id()%>"><%= client.name() %></option>
+      <input id="client_id" name="client_id" type="hidden" value="<%=client.id()%>">
+    <% end %>
+    </select>
+  </div>
+
+
+  <button type="submit" class="btn btn-success">Go!</button>
+</form>

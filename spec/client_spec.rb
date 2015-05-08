@@ -50,10 +50,20 @@ describe(Client) do
       it("updates client stylist_id") do
         test_client = Client.new({:name => "Clinton", :id => nil, :stylist_id => nil})
         test_client.save()
-        test_client.update({:stylist_id => 3})
-        expect(test_client.stylist_id()).to(eq(3))    
+        test_stylist = Stylist.new({:name => "Freddy", :id => nil})
+        test_stylist.save()
+        test_client.update({:stylist_id => test_stylist.id()})
+        expect(test_client.stylist_id()).to(eq(test_stylist.id))
       end
 
+    end
+
+    describe('.find') do
+      it("returns client by id") do
+        test_client = Client.new({:name => "Clinton", :id => nil, :stylist_id => nil})
+        test_client.save()
+        expect(Client.find(test_client.id())).to(eq(test_client))
+      end
     end
 
 
