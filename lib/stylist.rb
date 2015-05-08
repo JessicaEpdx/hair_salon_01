@@ -23,9 +23,17 @@ attr_reader(:name, :id)
   end
 
   def == (other_stylist)
-    self.name() == other_stylist.name() 
+    self.name() == other_stylist.name()
   end
 
+  def delete
+    DB.exec("DELETE FROM stylists WHERE id = #{self.id()};")
+    DB.exec("UPDATE clients SET stylist_id = 0 WHERE stylist_id = #{self.id()};")
+  end
 
+  def update (attributes)
+    @name = attributes.fetch(:name)
+    DB.exec("UPDATE stylists SET name = '#{@name}' WHERE id = #{self.id()};")
+  end
 
 end
