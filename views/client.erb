@@ -4,7 +4,7 @@
     <h1 style="font-size:30px;">Stylist for this client</h1>
     <% if @stylist_id > 0 %>
     <% stylist= Stylist.find(@stylist_id) %>
-    <span style="font-size:20px;"><%= stylist.name() %></span>
+    <span style="font-size:20px;"><a href="/stylists/<%= stylist.id() %>"><%=stylist.name()%></span>
     <% else %>
     <span style="font-size:20px;"><%= "There is no stylist yet" %></span>
     <%end %>

@@ -64,3 +64,9 @@ patch('/success') do##make patch later
   @client.update({:stylist_id => stylist_id})
   erb(:success)
 end
+
+patch('/success/stylist') do
+  @stylist = Stylist.find(params.fetch("stylist_id"))
+  @stylist.update({:name => params.fetch("name")})
+  erb(:success_stylist)
+end
