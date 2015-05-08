@@ -1,8 +1,5 @@
 <div class="row">
-  <div class="col-sm-6">
-    <h1 style="font-size:60px;">All Clients</h1>
-  </div>
-  <div class="col-sm-6">
+  <div class="col-sm-12">
     <div class="row">
       <a href="/" role="button" class="btn btn-primary" style="float: right; margin-top: 20px">Home</a>
     </div>
@@ -12,8 +9,29 @@
   </div>
 </div>
 
+<div class="row">
+<div class="col-sm-6">
+  <h1 style="font-size:40px;">All Clients</h1>
 <ul>
+<%if @all_clients.length()>0%>
 <% @all_clients.each() do |client| %>
-    <li><a href="/clients/<%= client.id()%>"><%= client.name() %></li>
+    <li><a href="/clients/<%= client.id()%>"><%= client.name() %></a></li>
     <% end %>
+    <% else%>
+    <li><%= "No clients yet"%></li>
+    <%end%>
 </ul>
+</div>
+<div class="col-sm-6">
+  <h2>Add a client</h2>
+  <form action="/clients" method="post">
+    <div class="form-group">
+      <label for="client_name">New Client Name</label>
+      <input id="client_name" name="client_name" type="text" class="form-control" placeholder="Stannis Baratheon">
+    </div>
+
+  <button type="submit" class="btn btn-success">Add Client</button>
+  </form>
+</div>
+
+</div>
