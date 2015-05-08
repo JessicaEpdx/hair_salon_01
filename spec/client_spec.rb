@@ -66,6 +66,14 @@ describe(Client) do
       end
     end
 
+    describe('#id') do
+      it("returns clients id") do
+        test_client = Client.new({:name => "Clinton", :id => nil, :stylist_id => nil})
+        test_client.save()
+        expect(test_client.id()).to be_an_instance_of(Fixnum)
+      end
+    end
+
 
 
 

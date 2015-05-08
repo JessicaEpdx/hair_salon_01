@@ -45,14 +45,14 @@ end
 get('/stylists/:id') do
   @stylist = Stylist.find(params.fetch("id"))
   @all_clients = Client.all()
+  @clients = @stylist.clients()
   erb(:stylist)
 end
 
-post('/stylists/:id') do##make patch later
-  @stylist = Stylist.find(params.fetch("id"))
+patch('/success') do##make patch later
+  @stylist = Stylist.find(params.fetch("stylist_id"))
   @all_clients = Client.all()
-  @client = Client.find(params.fetch("client_id".to_i))
-  @client.update({:stylist_id => params.fetch("id")})
+  @client = Client.find(params.fetch("client_id").to_i)
   @clients = @stylist.clients()
-  erb(:stylist)
+  erb(:success)
 end
