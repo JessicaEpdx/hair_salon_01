@@ -1,8 +1,15 @@
 <div class="row">
-  <div class="col-sm-6">
-    <h1 style="font-size:60px;">Client: <%= @client.name() %></h1>
+  <div class="col-sm-10">
+    <h1 style="font-size:60px;"><%= @client.name() %></h1>
+    <h1 style="font-size:30px;">Stylist for this client</h1>
+    <% if @stylist_id > 0 %>
+    <% stylist= Stylist.find(@stylist_id) %>
+    <span style="font-size:20px;"><%= stylist.name() %></span>
+    <% else %>
+    <span style="font-size:20px;"><%= "There is no stylist yet" %></span>
+    <%end %>
   </div>
-  <div class="col-sm-6">
+  <div class="col-sm-2">
     <div class="row">
       <a href="/" role="button" class="btn btn-primary" style="float: right; margin-top: 20px">Home</a>
     </div>
@@ -14,5 +21,3 @@
     </div>
   </div>
 </div>
-
-Stylist for this client: <%= @stylist.name() %>
