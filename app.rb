@@ -51,8 +51,8 @@ end
 
 patch('/success') do##make patch later
   @stylist = Stylist.find(params.fetch("stylist_id"))
-  @all_clients = Client.all()
+  stylist_id = @stylist.id().to_i
   @client = Client.find(params.fetch("client_id").to_i)
-  @clients = @stylist.clients()
+  @client.update({:stylist_id => stylist_id})
   erb(:success)
 end
