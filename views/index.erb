@@ -1,0 +1,28 @@
+<h1 class="header">Hairdo the Right Thing Salon</h1>
+<br>
+
+<div class="row">
+  <div class="col-sm-6">
+    <h2>Add a client</h2>
+    <form action="/clients" method="post">
+      <div class="form-group">
+        <label for="client_name">New Client Name</label>
+        <input id="client_name" name="client_name" type="text" class="form-control" placeholder="Stannis Baratheon">
+      </div>
+
+    <button type="submit" class="btn btn-success">Add Client</button>
+    </form>
+  </div>
+
+  <div class="col-sm-6">
+    <h2>Add a stylist</h2>
+    <form action="/stylists" method="post">
+    <div class="form-group">
+      <label for="stylist_name">New Stylist Name</label>
+      <input id="stylist_name" name="stylist_name" type="text" class="form-control" placeholder="Molly Shannon">
+    </div>
+
+    <button type="submit" class="btn btn-success">Add Stylist</button>
+    </form>
+  </div>
+</div>
