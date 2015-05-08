@@ -70,3 +70,10 @@ patch('/success/stylist') do
   @stylist.update({:name => params.fetch("name")})
   erb(:success_stylist)
 end
+
+delete('/clients') do
+  client = Client.find(params.fetch("client_id").to_i)
+  client.delete()
+  @all_clients = Client.all()
+  erb(:clients)
+end
