@@ -13,3 +13,17 @@ a:hover {
   text-decoration:none;
 
 }
+
+.btn-success{
+  background-color:#5F9F9F;
+  border:#5F9F9F;
+
+}
+
+.btn-success:hover{
+  background-color:#388E8E;
+}
+
+h1{
+  color:#325C74;
+}

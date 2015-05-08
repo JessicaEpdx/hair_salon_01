@@ -19,16 +19,17 @@
     </div>
   </div>
 </div>
+
 <br><br><br>
 
 <div class="row">
-  <div class="col-sm-4">
-    <h1 style="font-size:20px;">Change Client Name</h1>
+  <div class="col-sm-6">
+    <h2 style="font-size:20px;">Change Client Name</h2>
     <form action = "/success/client" method= "post">
       <input name="_method" type="hidden" value="patch">
       <input name="client_id" id="client_id" type="hidden" value="<%=@client.id()%>">
       <div class="form-group">
-        <input id="name" name="name" type="text" placeholder="Brian Wilson">
+        <input id="name" name="name" type="text" placeholder="ex: Brian Wilson">
         </select>
       </div>
 
@@ -36,13 +37,13 @@
     </form>
   </div>
 
-  <div class="col-sm-8">
-    <h1 style="font-size:20px;">Stylist for this client</h1>
+  <div class="col-sm-6">
+    <h2 style="font-size:20px;">Stylist for this client</h2>
     <% if @stylist_id > 0 %>
     <% stylist= Stylist.find(@stylist_id) %>
     <span style="font-size:20px;"><a href="/stylists/<%= stylist.id() %>"><%=stylist.name()%></span>
     <% else %>
-    <span style="font-size:20px;"><%= "There is no stylist yet" %></span>
+    <span style="font-size:15px;"><%= "There is no stylist yet" %></span>
     <%end %>
   </div>
 </div>

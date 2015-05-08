@@ -4,15 +4,18 @@
       <a href="/" role="button" class="btn btn-primary" style="float: right; margin-top: 20px">Home</a>
     </div>
     <div class="row">
-      <a href="/clients" role="button" class="btn btn-info" style="float: right; margin-top: 7px">All Clients</a>
+      <a href="/stylists" role="button" class="btn btn-warning" style="float: right; margin-top: 7px">All Stylists</a>
+    </div>
+    <div class="row">
+      <a href="/clients" role="button" class="btn btn-info" style="float:right; margin-top: 7px">All Clients</a>
     </div>
   </div>
 </div>
-<br><br>
+<br>
 
 <div class="row">
 <div class="col-sm-6">
-  <h1 style="font-size:40px;">All Stylists</h1>
+  <h2 style="font-size:40px;">All Stylists</h2>
   <ul>
   <% if @all_stylists.length()>0 %>
   <% @all_stylists.each() do |stylist| %>
@@ -28,7 +31,7 @@
   <form action="/stylists" method="post">
   <div class="form-group">
     <label for="stylist_name">New Stylist Name</label>
-    <input id="stylist_name" name="stylist_name" type="text" class="form-control" placeholder="Molly Shannon">
+    <input id="stylist_name" name="stylist_name" type="text" class="form-control" placeholder="ex: Molly Shannon">
   </div>
 
   <button type="submit" class="btn btn-success">Add Stylist</button>
