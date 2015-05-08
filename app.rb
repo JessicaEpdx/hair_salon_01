@@ -32,6 +32,13 @@ post('/stylists') do
   erb(:stylists)
 end
 
+delete('/stylists') do
+  stylist = Stylist.find(params.fetch("stylist_id").to_i)
+  stylist.delete()
+  @all_stylists = Stylist.all()
+  erb(:stylists)
+end
+
 get('/stylists') do
   @all_stylists = Stylist.all()
   erb(:stylists)
