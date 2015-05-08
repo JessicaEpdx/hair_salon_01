@@ -24,8 +24,8 @@
 
 
 <div class="row">
-  <div class="col-sm-6">
-    <h1 style="font-size:30px;">Add a Client to <%= @stylist.name()%></h1>
+  <div class="col-sm-4">
+    <h1 style="font-size:20px;">Add a Client to <%= @stylist.name()%></h1>
     <form action = "/success" method= "post">
       <input name="_method" type="hidden" value="patch">
       <input name="stylist_id" id="stylist_id" type="hidden" value="<%=@stylist.id()%>">
@@ -42,8 +42,8 @@
       </form>
   </div>
 
-  <div class="col-sm-6">
-    <h1 style="font-size:30px;">Change Stylist Name</h1>
+  <div class="col-sm-4">
+    <h1 style="font-size:20px;">Change Stylist Name</h1>
     <form action = "/success/stylist" method= "post">
       <input name="_method" type="hidden" value="patch">
       <input name="stylist_id" id="stylist_id" type="hidden" value="<%=@stylist.id()%>">
@@ -56,17 +56,18 @@
       <button type="submit" class="btn btn-success">Change Name</button>
     </form>
   </div>
+
+  <div class="col-sm-4">
+    <h1 style="font-size:20px;">Clients of <%= @stylist.name()%></h1>
+
+    <ul>
+    <% if @stylist.clients().length > 0 %>
+      <% @clients.each() do |client| %>
+          <li><a href="/clients/<%= client.id()%>"><%= client.name() %></li>
+        <% end %>
+      <% else %>
+      <%= "This stylist has no clients" %>
+      <%end %>
+    </ul>
 </div>
-
-<br><br><br>
-<h1 style="font-size:30px;">Clients of <%= @stylist.name()%></h1>
-
-<ul>
-<% if @stylist.clients().length > 0 %>
-  <% @clients.each() do |client| %>
-      <li><a href="/clients/<%= client.id()%>"><%= client.name() %></li>
-    <% end %>
-  <% else %>
-  <%= "This stylist has no clients" %>
-  <%end %>
-</ul>
+</div>

@@ -77,3 +77,9 @@ delete('/clients') do
   @all_clients = Client.all()
   erb(:clients)
 end
+
+patch('/success/client') do
+  @client = Client.find(params.fetch("client_id").to_i)
+  @client.update({:name => params.fetch("name")})
+  erb(:success_client)
+end
